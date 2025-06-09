@@ -1,12 +1,12 @@
 {
   "name": "portfolio-delta",
-  "version": "0.0.0",
-  "scripts": {
+  "version": "0.0.0",  "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:gh-pages": "ng build --configuration production --base-href=/portfolio-2024/"
   },
   "private": true,
   "dependencies": {
