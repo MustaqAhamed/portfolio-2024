@@ -21,13 +21,23 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: |
+          npm install --legacy-peer-deps
+          npm install -g @angular/cli
 
       - name: Build
-        run: npm run build -- --configuration production --base-href="/portfolio-2024/"
+        run: |
+          npm run build -- --configuration production --base-href="/portfolio-2024/"
+          cd dist/portfolio-delta/browser
+          cp index.html 404.html
+          touch .nojekyll
+          echo "Build output contents:"
+          ls -la
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
+          folder: dist/portfolio-delta/browser
           branch: gh-pages
-          folder: dist/portfolio-delta
+          clean: true
+          single-commit: true
